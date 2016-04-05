@@ -29,8 +29,10 @@ $target = $_SERVER['argv'][1];
 function fgets_u($pStdn)
 {
     $pArr = [$pStdn];
-
-    if (false === ($num_changed_streams = stream_select($pArr, $write = null, $except = null, 0))) {
+    
+    $write = null;
+    $except = null;
+    if (false === ($num_changed_streams = stream_select($pArr, $write, $except, 0))) {
         echo "\$ 001 Socket Error : UNABLE TO WATCH STDIN.\n";
 
         return false;
